@@ -2,7 +2,7 @@ name: Claude Code Warmup
 
 on:
   schedule:
-    - cron: ${{ vars.WARMUP_CRON || '15 9 * * 1-5' }}
+    - cron: '15 13 * * 1-5'
   workflow_dispatch: {}
 
 jobs:
@@ -20,4 +20,3 @@ jobs:
           mkdir -p ~/.claude
           echo '{"hasCompletedOnboarding":true}' > ~/.claude.json
           claude -p "hi" --model haiku --no-session-persistence 2>&1 || true
-          echo "✓ Warmup complete"
